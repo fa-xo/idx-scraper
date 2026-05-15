@@ -98,109 +98,121 @@ def download_file(url, filename, kode_emiten):
             logging.error(f"Gagal mendownload {url}: {e}")
             return False
 
-def scrape_idx(start_index=0):
-    logging.info(f"Memulai proses scraping IDX (Mulai dari index: {start_index})...")
-    init_db()
-    
-    today_str = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
-    
-    page_size = 100
-    index_from = start_index
-    
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)',
-        'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi'
-    }
-    
-    # Logic baru: Jika dalam 1 halaman tidak ada file baru (semua sudah didownload),
-    # kita asumsikan sudah mengejar seluruh data lama dan bisa berhenti.
-    
-    while True:
-        url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
-        logging.info(f"Mengambil data API (indexFrom={index_from})...")
+def scrape_idx(start_index=0, emiten_list=None):
+    if not emiten_list:
+        emiten_list = [""] # String kosong berarti semua emiten
         
-        attempt = 1
-        delay = 3
-        data = None
+    for current_emiten in emiten_list:
+        if current_emiten:
+            logging.info(f"Memulai proses scraping IDX untuk emiten: {current_emiten} (Mulai dari index: {start_index})...")
+        else:
+            logging.info(f"Memulai proses scraping IDX untuk semua emiten (Mulai dari index: {start_index})...")
+            
+        init_db()
+        
+        today_str = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
+        
+        page_size = 100
+        index_from = start_index
+        
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)',
+            'Accept': 'application/json, text/plain, */*',
+            'Referer': 'https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi'
+        }
+        
+        # Logic baru: Jika dalam 1 halaman tidak ada file baru (semua sudah didownload),
+        # kita asumsikan sudah mengejar seluruh data lama dan bisa berhenti.
+        
         while True:
-            try:
-                scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
-                response = scraper.get(url, headers=headers, proxies=PROXIES, timeout=30)
-                if response.status_code == 403:
-                    logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry ke-{attempt} dalam {delay} detik...")
-                    time.sleep(delay)
-                    attempt += 1
-                    delay = min(300, delay * 2) # Exponential backoff max 5 menit
-                    continue
+            url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten={current_emiten}&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
+            logging.info(f"Mengambil data API (indexFrom={index_from})...")
+            
+            attempt = 1
+            delay = 3
+            data = None
+            while True:
+                try:
+                    scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
+                    response = scraper.get(url, headers=headers, proxies=PROXIES, timeout=30)
+                    if response.status_code == 403:
+                        logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry ke-{attempt} dalam {delay} detik...")
+                        time.sleep(delay)
+                        attempt += 1
+                        delay = min(300, delay * 2) # Exponential backoff max 5 menit
+                        continue
+                        
+                    response.raise_for_status()
+                    data = response.json()
+                    break # Sukses, keluar dari loop retry
+                except Exception as e:
+                    logging.error(f"Gagal memanggil API: {e}")
+                    break
                     
-                response.raise_for_status()
-                data = response.json()
-                break # Sukses, keluar dari loop retry
-            except Exception as e:
-                logging.error(f"Gagal memanggil API: {e}")
+            if data is None:
+                # Gagal mendapatkan data setelah retry (atau gagal karena error lain)
                 break
                 
-        if data is None:
-            # Gagal mendapatkan data setelah retry (atau gagal karena error lain)
-            break
-            
-        replies = data.get('Replies', [])
-        if not replies:
-            logging.info("Tidak ada data lagi dari API.")
-            break
-            
-        new_in_page = 0
-        existing_in_page = 0
-            
-        for reply in replies:
-            pengumuman = reply.get('pengumuman', {})
-            pengumuman_id = pengumuman.get('Id2')
-            kode_emiten = pengumuman.get('Kode_Emiten', 'UNKNOWN').strip()
-            attachments = reply.get('attachments', [])
-            
-            for att in attachments:
-                file_url = att.get('FullSavePath')
-                original_filename = att.get('OriginalFilename', '')
+            replies = data.get('Replies', [])
+            if not replies:
+                logging.info("Tidak ada data lagi dari API.")
+                break
                 
-                if not file_url:
-                    continue
+            new_in_page = 0
+            existing_in_page = 0
+                
+            for reply in replies:
+                pengumuman = reply.get('pengumuman', {})
+                pengumuman_id = pengumuman.get('Id2')
+                kode_emiten = pengumuman.get('Kode_Emiten', 'UNKNOWN').strip()
+                attachments = reply.get('attachments', [])
+                
+                for att in attachments:
+                    file_url = att.get('FullSavePath')
+                    original_filename = att.get('OriginalFilename', '')
                     
-                lower_name = original_filename.lower()
-                # Filter hanya file PDF dan XLSX
-                if not (lower_name.endswith('.pdf') or lower_name.endswith('.xlsx')):
-                    continue
-                    
-                if is_downloaded(file_url):
-                    # File sudah pernah didownload
-                    existing_in_page += 1
-                    continue
-                else:
-                    new_in_page += 1
-                    # Bersihkan karakter aneh pada nama file jika ada
-                    safe_filename = "".join([c for c in original_filename if c.isalpha() or c.isdigit() or c in ' ._-()[]']).rstrip()
-                    
-                    if download_file(file_url, safe_filename, kode_emiten):
-                        mark_downloaded(file_url, pengumuman_id, safe_filename)
-                        time.sleep(1) # Delay sopan supaya tidak diblokir server
-        
-        if new_in_page == 0 and existing_in_page > 0:
-            logging.info(f"Semua {existing_in_page} file valid di halaman {index_from} sudah pernah didownload.")
-            logging.info("Diasumsikan sudah mengejar seluruh file terbaru. Berhenti untuk siklus ini.")
-            break
+                    if not file_url:
+                        continue
+                        
+                    lower_name = original_filename.lower()
+                    # Filter hanya file PDF dan XLSX
+                    if not (lower_name.endswith('.pdf') or lower_name.endswith('.xlsx')):
+                        continue
+                        
+                    if is_downloaded(file_url):
+                        # File sudah pernah didownload
+                        existing_in_page += 1
+                        continue
+                    else:
+                        new_in_page += 1
+                        # Bersihkan karakter aneh pada nama file jika ada
+                        safe_filename = "".join([c for c in original_filename if c.isalpha() or c.isdigit() or c in ' ._-()[]']).rstrip()
+                        
+                        if download_file(file_url, safe_filename, kode_emiten):
+                            mark_downloaded(file_url, pengumuman_id, safe_filename)
+                            time.sleep(1) # Delay sopan supaya tidak diblokir server
             
-        index_from += 1
-        time.sleep(2) # Delay sopan antar halaman API
-        
-    logging.info("Proses scraping selesai.")
+            if new_in_page == 0 and existing_in_page > 0:
+                logging.info(f"Semua {existing_in_page} file valid di halaman {index_from} sudah pernah didownload.")
+                logging.info("Diasumsikan sudah mengejar seluruh file terbaru. Berhenti untuk siklus ini.")
+                break
+                
+            index_from += 1
+            time.sleep(2) # Delay sopan antar halaman API
+            
+        logging.info(f"Proses scraping selesai untuk emiten: {current_emiten if current_emiten else 'SEMUA'}.")
 
 if __name__ == "__main__":
     start_idx = 0
+    emiten_list = []
     for arg in sys.argv[1:]:
         if arg.startswith("index-start="):
             try:
                 start_idx = int(arg.split("=")[1])
             except ValueError:
                 logging.error("Format index-start tidak valid, harus angka. Contoh: index-start=50")
+        elif arg.startswith("--emiten="):
+            emiten_str = arg.split("=")[1]
+            emiten_list = [e.strip().upper() for e in emiten_str.split(",") if e.strip()]
                 
-    scrape_idx(start_idx)
+    scrape_idx(start_idx, emiten_list)
