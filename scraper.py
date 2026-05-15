@@ -1,5 +1,6 @@
 import cloudscraper
 import sqlite3
+import sys
 import os
 import time
 from datetime import datetime, timedelta
@@ -73,7 +74,7 @@ def download_file(url, filename, kode_emiten):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)'
     }
     
-    max_retries = 3
+    max_retries = 7
     for attempt in range(1, max_retries + 1):
         try:
             scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
@@ -96,14 +97,14 @@ def download_file(url, filename, kode_emiten):
             
     return False
 
-def scrape_idx():
-    logging.info("Memulai proses scraping IDX...")
+def scrape_idx(start_index=0):
+    logging.info(f"Memulai proses scraping IDX (Mulai dari index: {start_index})...")
     init_db()
     
     today_str = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
     
     page_size = 50
-    index_from = 0
+    index_from = start_index
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)',
@@ -121,7 +122,7 @@ def scrape_idx():
         url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
         logging.info(f"Mengambil data API (indexFrom={index_from})...")
         
-        max_retries = 3
+        max_retries = 7
         data = None
         for attempt in range(1, max_retries + 1):
             try:
@@ -185,10 +186,18 @@ def scrape_idx():
             logging.info("Diasumsikan sudah mengejar seluruh file terbaru. Berhenti untuk siklus ini.")
             break
             
-        index_from += page_size
+        index_from += 1
         time.sleep(2) # Delay sopan antar halaman API
         
     logging.info("Proses scraping selesai.")
 
 if __name__ == "__main__":
-    scrape_idx()
+    start_idx = 0
+    for arg in sys.argv[1:]:
+        if arg.startswith("index-start="):
+            try:
+                start_idx = int(arg.split("=")[1])
+            except ValueError:
+                logging.error("Format index-start tidak valid, harus angka. Contoh: index-start=50")
+                
+    scrape_idx(start_idx)
