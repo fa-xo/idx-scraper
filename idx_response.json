@@ -1,0 +1,514 @@
+{
+    "ResultCount": 248775,
+    "SearchParams": {
+        "DateFrom": "01/01/1901 12:00:00 AM",
+        "DateTo": "15/05/2026 12:00:00 AM",
+        "Query": null,
+        "Language": "id-id",
+        "KodeEmiten": null,
+        "EmitenType": "*",
+        "SortOrder": null,
+        "SortColumn": null,
+        "indexfrom": 0,
+        "pagesize": 10
+    },
+    "Replies": [
+        {
+            "pengumuman": {
+                "Id2": "20260515174208-015/ERAL/CS/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "015/ERAL/CS/V/2026",
+                "TglPengumuman": "2026-05-15T17:42:08",
+                "JudulPengumuman": "Penyampaian Bukti Iklan Pemberitahuan RUPS",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "ERAL                                                                                                ",
+                "CreatedDate": "2026-05-15T18:00:02",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Penyampaian Bukti Iklan Pember",
+                "JMSXGroupID": "f-32091427-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "176bd5ebfb_ba455b38c4.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/176bd5ebfb_ba455b38c4.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_ERAL_Penyampaian Bukti Iklan_32091427.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "37926176b3_d068657e23.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/37926176b3_d068657e23.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_ERAL_Penyampaian Bukti Iklan_32091427_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515173706-025/CS-OPI/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "025/CS-OPI/V/2026",
+                "TglPengumuman": "2026-05-15T17:37:06",
+                "JudulPengumuman": "Penyampaian Bukti Iklan Pemberitahuan RUPS",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "SCPI                                                                                                ",
+                "CreatedDate": "2026-05-15T18:00:02",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Penyampaian Bukti Iklan Pember",
+                "JMSXGroupID": "f-32091426-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "e21b416154_5ca55779eb.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/e21b416154_5ca55779eb.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_SCPI_Penyampaian Bukti Iklan_32091426.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "7bb3a63509_eab6f5c3e3.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/7bb3a63509_eab6f5c3e3.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_SCPI_Penyampaian Bukti Iklan_32091426_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515172825-007/Corp-Sec/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "007/Corp-Sec/V/2026",
+                "TglPengumuman": "2026-05-15T17:28:25",
+                "JudulPengumuman": "Penyampaian Bukti Iklan Pemberitahuan RUPS",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "LEAD                                                                                                ",
+                "CreatedDate": "2026-05-15T18:00:02",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Penyampaian Bukti Iklan Pember",
+                "JMSXGroupID": "f-32091420-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "0d7ab786ca_c91c4dadd9.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/0d7ab786ca_c91c4dadd9.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_LEAD_Penyampaian Bukti Iklan_32091420.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "f574fb6843_61054b7293.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/f574fb6843_61054b7293.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_LEAD_Penyampaian Bukti Iklan_32091420_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515172021-0030/JMI-Tbk/DIR/V/26_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "0030/JMI-Tbk/DIR/V/26",
+                "TglPengumuman": "2026-05-15T17:20:21",
+                "JudulPengumuman": "Perubahan Anggaran Dasar Perseroan Dalam Rangka Penyesuaian Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) 2025 (KOREKSI)",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "OMED                                                                                                ",
+                "CreatedDate": "2026-05-15T17:30:02",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Perubahan Anggaran Dasar Perse",
+                "JMSXGroupID": "f-32091419-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "280cfc20ba_ebd9394f6a.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/280cfc20ba_ebd9394f6a.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_OMED_Laporan Informasi dan Fakta Material_32091419.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "d453d2fc6e_38547aa70e.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/d453d2fc6e_38547aa70e.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_OMED_Laporan Informasi dan Fakta Material_32091419_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515171539-024/LTS-CORSEC/V/2026-koreksi_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "024/LTS-CORSEC/V/2026-koreksi",
+                "TglPengumuman": "2026-05-15T17:15:39",
+                "JudulPengumuman": "Rencana Transaksi Material Dengan Persetujuan RUPS (KOREKSI)",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "TAMA                                                                                                ",
+                "CreatedDate": "2026-05-15T17:30:02",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Rencana Transaksi Material Den",
+                "JMSXGroupID": "f-32091408-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "91a239d598_60d6dce5f8.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/91a239d598_60d6dce5f8.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_TAMA_Rencana Transaksi Material Dengan Persetujuan RUPS_32091408.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "658279f979_325d04c00c.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/658279f979_325d04c00c.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_TAMA_Rencana Transaksi Material Dengan Persetujuan RUPS_32091408_lamp3.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "8d63701ad3_6b147197b1.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/8d63701ad3_6b147197b1.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_TAMA_Rencana Transaksi Material Dengan Persetujuan RUPS_32091408_lamp1.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "9eb34f4d3c_a16e9c0c20.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/9eb34f4d3c_a16e9c0c20.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_TAMA_Rencana Transaksi Material Dengan Persetujuan RUPS_32091408_lamp2.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515165140-085/CORSEC/MTI/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "085/CORSEC/MTI/V/2026",
+                "TglPengumuman": "2026-05-15T16:51:40",
+                "JudulPengumuman": "Transaksi pembelian saham Perseroan oleh Anggota Komisaris",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "BABY                                                                                                ",
+                "CreatedDate": "2026-05-15T17:00:01",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Transaksi pembelian saham Pers",
+                "JMSXGroupID": "f-32091418-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "b7a1e861ac_869c2d9614.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/b7a1e861ac_869c2d9614.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_BABY_Laporan Informasi dan Fakta Material_32091418.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "2d2ab0c6e1_3b728b3645.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/2d2ab0c6e1_3b728b3645.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_BABY_Laporan Informasi dan Fakta Material_32091418_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515164620-LK/15052026/0003/1_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "LK/15052026/0003/1",
+                "TglPengumuman": "2026-05-15T16:46:20",
+                "JudulPengumuman": "LAPORAN KEPEMILIKAN ATAU SETIAP PERUBAHAN KEPEMILIKAN SAHAM PERUSAHAAN TERBUKA",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "BABY",
+                "CreatedDate": "2026-05-15T16:46:01",
+                "Form_Id": "0",
+                "PerihalPengumuman": "LAPORAN KEPEMILIKAN ATAU SETIAP PERUBAHAN KEPEMILIKAN SAHAM PERUSAHAAN TERBUKA - - - Group:-",
+                "JMSXGroupID": "lk-20260515489-00",
+                "Divisi": "0",
+                "KodeDivisi": "-",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": false,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "LK-15052026-1922-00.pdf-0",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_KSEI/LK-15052026-1922-00.pdf-0.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "LK-15052026-1922-00.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515163446-082/SMGA/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "082/SMGA/V/2026",
+                "TglPengumuman": "2026-05-15T16:34:46",
+                "JudulPengumuman": "Penyampaian Bukti Iklan Panggilan RUPS",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "SMGA                                                                                                ",
+                "CreatedDate": "2026-05-15T17:00:01",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Penyampaian Bukti Iklan Panggi",
+                "JMSXGroupID": "f-32091380-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "ede06b51b4_e0e7460055.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/ede06b51b4_e0e7460055.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_SMGA_Penyampaian Bukti Iklan_32091380.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "f208f76574_7f9e323ddb.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/f208f76574_7f9e323ddb.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_SMGA_Penyampaian Bukti Iklan_32091380_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515160652-0029/JMI-Tbk/DIR/V/26_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "0029/JMI-Tbk/DIR/V/26",
+                "TglPengumuman": "2026-05-15T16:06:52",
+                "JudulPengumuman": "Penyampaian Bukti Iklan Panggilan RUPS",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "OMED                                                                                                ",
+                "CreatedDate": "2026-05-15T16:30:01",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Penyampaian Bukti Iklan Panggi",
+                "JMSXGroupID": "f-32091405-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "9ecc0331e0_9ed6358a15.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/9ecc0331e0_9ed6358a15.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_OMED_Penyampaian Bukti Iklan_32091405.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "f3334303c8_59ebc564bd.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/f3334303c8_59ebc564bd.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_OMED_Penyampaian Bukti Iklan_32091405_lamp1.pdf"
+                }
+            ]
+        },
+        {
+            "pengumuman": {
+                "Id2": "20260515155240-21/REV-RD/RUPST/ISEA/CS/V/2026_id-id",
+                "EfekEmiten_DIRE": false,
+                "EfekEmiten_DINFRA": false,
+                "Id": 0,
+                "FinalId": null,
+                "OldFinalId": 0,
+                "NoPengumuman": "21/REV-RD/RUPST/ISEA/CS/V/2026",
+                "TglPengumuman": "2026-05-15T15:52:40",
+                "JudulPengumuman": "Perubahan Jadwal Rapat Umum Pemegang Saham Tahunan",
+                "JenisPengumuman": "STOCK",
+                "Kode_Emiten": "ISEA                                                                                                ",
+                "CreatedDate": "2026-05-15T16:00:01",
+                "Form_Id": "10000",
+                "PerihalPengumuman": "Perubahan Jadwal Rapat Umum Pe",
+                "JMSXGroupID": "f-32091407-0",
+                "Divisi": "",
+                "KodeDivisi": "",
+                "JenisEmiten": null,
+                "EfekEmiten_Saham": true,
+                "EfekEmiten_Obligasi": false,
+                "EfekEmiten_EBA": false,
+                "EfekEmiten_ETF": false,
+                "EfekEmiten_SPEI": false
+            },
+            "attachments": [
+                {
+                    "Id": 0,
+                    "PDFFilename": "dda69a155e_d68a31951b.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/dda69a155e_d68a31951b.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": false,
+                    "OriginalFilename": "20260515_ISEA_Pemanggilan RUPS_32091407.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "17e2cdf9d6_18280ebf3c.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/17e2cdf9d6_18280ebf3c.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_ISEA_Pemanggilan RUPS_32091407_lamp3.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "194f35e348_02c376006e.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/194f35e348_02c376006e.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_ISEA_Pemanggilan RUPS_32091407_lamp2.pdf"
+                },
+                {
+                    "Id": 0,
+                    "PDFFilename": "f427364153_900421d580.pdf",
+                    "FullSavePath": "https://www.idx.co.id/StaticData/NewsAndAnnouncement/ANNOUNCEMENTSTOCK/From_EREP/202605/f427364153_900421d580.pdf",
+                    "JMSXGroupID": null,
+                    "CorrelationID": null,
+                    "IsAttachment": true,
+                    "OriginalFilename": "20260515_ISEA_Pemanggilan RUPS_32091407_lamp1.pdf"
+                }
+            ]
+        }
+    ]
+}
