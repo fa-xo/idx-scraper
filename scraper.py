@@ -1,8 +1,8 @@
-import requests
+from curl_cffi import requests
 import sqlite3
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import logging
 
 # Menentukan path absolute agar aman jika dijalankan via cron
@@ -73,7 +73,7 @@ def download_file(url, filename, kode_emiten):
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)'
         }
-        response = requests.get(url, headers=headers, proxies=PROXIES, stream=True, timeout=30)
+        response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", stream=True, timeout=30)
         response.raise_for_status()
         with open(filepath, 'wb') as f:
             for chunk in response.iter_content(chunk_size=8192):
@@ -89,7 +89,7 @@ def scrape_idx():
     logging.info("Memulai proses scraping IDX...")
     init_db()
     
-    today_str = datetime.now().strftime("%Y%m%d")
+    today_str = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
     
     page_size = 50
     index_from = 0
@@ -111,7 +111,7 @@ def scrape_idx():
         logging.info(f"Mengambil data API (indexFrom={index_from})...")
         
         try:
-            response = requests.get(url, headers=headers, proxies=PROXIES, timeout=30)
+            response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", timeout=30)
             response.raise_for_status()
             data = response.json()
         except Exception as e:
