@@ -74,14 +74,17 @@ def download_file(url, filename, kode_emiten):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)'
     }
     
-    max_retries = 7
-    for attempt in range(1, max_retries + 1):
+    attempt = 1
+    delay = 3
+    while True:
         try:
             scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
             response = scraper.get(url, headers=headers, proxies=PROXIES, stream=True, timeout=30)
-            if response.status_code == 403 and attempt < max_retries:
-                logging.warning(f"Kena 403 Forbidden saat mendownload {filename}. Retry {attempt}/{max_retries} dalam 3 detik...")
-                time.sleep(3)
+            if response.status_code == 403:
+                logging.warning(f"Kena 403 Forbidden saat mendownload {filename}. Retry ke-{attempt} dalam {delay} detik...")
+                time.sleep(delay)
+                attempt += 1
+                delay = min(300, delay * 2) # Exponential backoff max 5 menit
                 continue
                 
             response.raise_for_status()
@@ -94,8 +97,6 @@ def download_file(url, filename, kode_emiten):
         except Exception as e:
             logging.error(f"Gagal mendownload {url}: {e}")
             return False
-            
-    return False
 
 def scrape_idx(start_index=0):
     logging.info(f"Memulai proses scraping IDX (Mulai dari index: {start_index})...")
@@ -103,7 +104,7 @@ def scrape_idx(start_index=0):
     
     today_str = (datetime.now() + timedelta(days=1)).strftime("%Y%m%d")
     
-    page_size = 50
+    page_size = 100
     index_from = start_index
     
     headers = {
@@ -119,15 +120,18 @@ def scrape_idx(start_index=0):
         url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
         logging.info(f"Mengambil data API (indexFrom={index_from})...")
         
-        max_retries = 7
+        attempt = 1
+        delay = 3
         data = None
-        for attempt in range(1, max_retries + 1):
+        while True:
             try:
                 scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
                 response = scraper.get(url, headers=headers, proxies=PROXIES, timeout=30)
-                if response.status_code == 403 and attempt < max_retries:
-                    logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry {attempt}/{max_retries} dalam 3 detik...")
-                    time.sleep(3)
+                if response.status_code == 403:
+                    logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry ke-{attempt} dalam {delay} detik...")
+                    time.sleep(delay)
+                    attempt += 1
+                    delay = min(300, delay * 2) # Exponential backoff max 5 menit
                     continue
                     
                 response.raise_for_status()
