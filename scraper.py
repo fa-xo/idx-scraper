@@ -1,4 +1,4 @@
-from curl_cffi import requests
+import cloudscraper
 import sqlite3
 import os
 import time
@@ -76,7 +76,8 @@ def download_file(url, filename, kode_emiten):
     max_retries = 3
     for attempt in range(1, max_retries + 1):
         try:
-            response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", stream=True, timeout=30)
+            scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
+            response = scraper.get(url, headers=headers, proxies=PROXIES, stream=True, timeout=30)
             if response.status_code == 403 and attempt < max_retries:
                 logging.warning(f"Kena 403 Forbidden saat mendownload {filename}. Retry {attempt}/{max_retries} dalam 3 detik...")
                 time.sleep(3)
@@ -124,7 +125,8 @@ def scrape_idx():
         data = None
         for attempt in range(1, max_retries + 1):
             try:
-                response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", timeout=30)
+                scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
+                response = scraper.get(url, headers=headers, proxies=PROXIES, timeout=30)
                 if response.status_code == 403 and attempt < max_retries:
                     logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry {attempt}/{max_retries} dalam 3 detik...")
                     time.sleep(3)
