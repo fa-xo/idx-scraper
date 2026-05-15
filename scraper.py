@@ -68,22 +68,32 @@ def download_file(url, filename, kode_emiten):
         os.makedirs(target_dir)
     
     filepath = os.path.join(target_dir, filename)
-    try:
-        logging.info(f"Mendownload: {filename}")
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)'
-        }
-        response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", stream=True, timeout=30)
-        response.raise_for_status()
-        with open(filepath, 'wb') as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                if chunk:
-                    f.write(chunk)
-        logging.info(f"Berhasil disimpan: {filepath}")
-        return True
-    except Exception as e:
-        logging.error(f"Gagal mendownload {url}: {e}")
-        return False
+    logging.info(f"Mendownload: {filename}")
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36)'
+    }
+    
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", stream=True, timeout=30)
+            if response.status_code == 403 and attempt < max_retries:
+                logging.warning(f"Kena 403 Forbidden saat mendownload {filename}. Retry {attempt}/{max_retries} dalam 3 detik...")
+                time.sleep(3)
+                continue
+                
+            response.raise_for_status()
+            with open(filepath, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        f.write(chunk)
+            logging.info(f"Berhasil disimpan: {filepath}")
+            return True
+        except Exception as e:
+            logging.error(f"Gagal mendownload {url}: {e}")
+            return False
+            
+    return False
 
 def scrape_idx():
     logging.info("Memulai proses scraping IDX...")
@@ -110,12 +120,25 @@ def scrape_idx():
         url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
         logging.info(f"Mengambil data API (indexFrom={index_from})...")
         
-        try:
-            response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", timeout=30)
-            response.raise_for_status()
-            data = response.json()
-        except Exception as e:
-            logging.error(f"Gagal memanggil API: {e}")
+        max_retries = 3
+        data = None
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = requests.get(url, headers=headers, proxies=PROXIES, impersonate="chrome", timeout=30)
+                if response.status_code == 403 and attempt < max_retries:
+                    logging.warning(f"Kena 403 Forbidden saat memanggil API. Retry {attempt}/{max_retries} dalam 3 detik...")
+                    time.sleep(3)
+                    continue
+                    
+                response.raise_for_status()
+                data = response.json()
+                break # Sukses, keluar dari loop retry
+            except Exception as e:
+                logging.error(f"Gagal memanggil API: {e}")
+                break
+                
+        if data is None:
+            # Gagal mendapatkan data setelah retry (atau gagal karena error lain)
             break
             
         replies = data.get('Replies', [])
