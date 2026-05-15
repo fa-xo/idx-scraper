@@ -112,11 +112,8 @@ def scrape_idx(start_index=0):
         'Referer': 'https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi'
     }
     
-    consecutive_existing = 0
-    # Jika menemukan file yang sudah didownload sebanyak 20 kali berturut-turut,
-    # kita asumsikan sudah mencapai data lama dan bisa berhenti, 
-    # agar tidak melooping seluruh data history sejak tahun 1901 setiap dijalankan.
-    max_consecutive_existing = 20 
+    # Logic baru: Jika dalam 1 halaman tidak ada file baru (semua sudah didownload),
+    # kita asumsikan sudah mengejar seluruh data lama dan bisa berhenti.
     
     while True:
         url = f"https://www.idx.co.id/primary/ListedCompany/GetAnnouncement?kodeEmiten=&emitenType=*&indexFrom={index_from}&pageSize={page_size}&dateFrom=19010101&dateTo={today_str}&lang=id&keyword="
@@ -149,6 +146,9 @@ def scrape_idx(start_index=0):
             logging.info("Tidak ada data lagi dari API.")
             break
             
+        new_in_page = 0
+        existing_in_page = 0
+            
         for reply in replies:
             pengumuman = reply.get('pengumuman', {})
             pengumuman_id = pengumuman.get('Id2')
@@ -169,11 +169,10 @@ def scrape_idx(start_index=0):
                     
                 if is_downloaded(file_url):
                     # File sudah pernah didownload
-                    consecutive_existing += 1
+                    existing_in_page += 1
                     continue
                 else:
-                    consecutive_existing = 0
-                    
+                    new_in_page += 1
                     # Bersihkan karakter aneh pada nama file jika ada
                     safe_filename = "".join([c for c in original_filename if c.isalpha() or c.isdigit() or c in ' ._-()[]']).rstrip()
                     
@@ -181,8 +180,8 @@ def scrape_idx(start_index=0):
                         mark_downloaded(file_url, pengumuman_id, safe_filename)
                         time.sleep(1) # Delay sopan supaya tidak diblokir server
         
-        if consecutive_existing >= max_consecutive_existing:
-            logging.info(f"Ditemukan {consecutive_existing} file yang sudah pernah didownload berturut-turut.")
+        if new_in_page == 0 and existing_in_page > 0:
+            logging.info(f"Semua {existing_in_page} file valid di halaman {index_from} sudah pernah didownload.")
             logging.info("Diasumsikan sudah mengejar seluruh file terbaru. Berhenti untuk siklus ini.")
             break
             
